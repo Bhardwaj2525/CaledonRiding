@@ -3,7 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Multi-Stop Route in Google Maps</title>
-  <link rel="stylesheet" href="maps.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f4f8;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 50px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+      box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
 </head>
 <body>
   <h2>Multi-Stop Route in Caledon, ON</h2>
@@ -25,17 +62,16 @@
         "6 Helderman St Caledon ON L7C 3V2"
       ];
 
-      const baseUrl = "https://www.google.com/maps/dir/?api=1";
+      const baseUrl = "google.maps://?api=1";
       const originParam = "origin=" + encodeURIComponent(origin);
       const destinationParam = "destination=" + encodeURIComponent(destination);
       const waypointsParam = "waypoints=" + encodeURIComponent(waypoints.join("|"));
 
       const fullUrl = `${baseUrl}&${originParam}&${destinationParam}&${waypointsParam}&travelmode=driving`;
 
-      window.open(fullUrl, '_blank');
+      // Try to open Google Maps app directly on mobile
+      window.location.href = fullUrl;
     }
   </script>
-
-  <script src="maps.js"></script>
 </body>
 </html>

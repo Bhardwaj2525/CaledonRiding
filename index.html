@@ -63,15 +63,15 @@
         "6 Helderman St Caledon ON L7C 3V2"
       ];
 
-      const baseUrl = "google.maps://?api=1";
+      const baseUrl = "https://www.google.com/maps/dir/?api=1"; // Use standard web link
       const originParam = "origin=" + encodeURIComponent(origin);
       const destinationParam = "destination=" + encodeURIComponent(destination);
       const waypointsParam = "waypoints=" + encodeURIComponent(waypoints.join("|"));
 
       const fullUrl = `${baseUrl}&${originParam}&${destinationParam}&${waypointsParam}&travelmode=driving`;
 
-      // Try to open Google Maps app directly on mobile
-      window.location.href = fullUrl;
+      // Open in a new tab, which works on both desktop and mobile
+      window.open(fullUrl, '_blank');
     }
   </script>
 </body>
